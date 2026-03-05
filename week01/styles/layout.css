@@ -9,6 +9,7 @@ body {
 
 main {
     flex: 1;
+    display: flex;
 }
 
 header {
@@ -29,6 +30,10 @@ nav {
     display: flex;
     justify-content: space-evenly;
 }
+.navigation a {
+    color: white;
+    text-decoration: none;
+}
 
 .navigation li a {
     color: white;
@@ -38,20 +43,25 @@ nav {
 
 .layout{
     display: flex;
-    min-height: 400px;
+    flex: 1;
+    width: 100%;
+    flex-wrap: wrap;
+    /*margin: 0;*/
+    /*min-height: 400px;*/
+    /*align-items: stretch;*/
 }
 
 .content {
     background-color: rgb(186, 191, 197);
     color: black;
-    flex: 3;
-    padding: 20px;
+    flex: 7;
+    padding: 40px;
 }
 
 .aside {
     background-color: rgb(248, 247, 247);
     color: black;
-    flex: 1;
+    flex: 3;
     padding: 40px;
 }
 
