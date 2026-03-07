@@ -3,25 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
+    <title>WDD 131 - Dynamic Web Fundamentals - Karee Graf</title>
+
+    <meta name="description" content="WDD 131 - Dynamic Web Fundamentals | Karee Graf | HTML, CSS JavaScript course landing page">
+    <meta name="author" content="Karee Graf">
+
+    <link rel="stylesheet" href="styles/base.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <script src="scripts/getdates.js" defer></script>
 </head>
+
 <body>
-    <h1>Header Content</h1>
+    
+    <header>
+    <span id="course-title">WDD 131 - Dynamic Web Fundamentals</span>
+    
+
     <nav>
         <ul class="navigation">
-            <li><a href="#" title="Home">Home</a></li>
-            <li><a href="#" title="Class Projects">Projects</a></li>
-            <li><a href="#" title= "Services">Services</a></li>
-            <li><a href="#" title="Contact Us">Contact Us</a></li>
+            <li><a href="https://www.linkedin.com/in/karee-graf-36a269222" target="_blank">LinkedIn</a></li>
+            <li><a href="https://byupw.instructure.com/" target="_blank">I-Learn</a></li>
+            <li><a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3?lang=eng&id=p7#p7" target="_blank">Scripture</a></li>
+            <li><a href="#" title="Final Project">Final Project</a></li>
         </ul>
     </nav>
+    
+</header>
+    
     <main>
-        <p>Main content</p>
-    window</p>
-    <p>Aside content</p>
+        <h1>Karee Graf</h1>
+        <section class="card">
+            <h2>About Me</h2>
+            <img src="images/profile.webp" alt="Photo of Karee Graf">
+
+            <p>Hello! My name is Karee Graf. I live in Pioche Nevada. I am a mother of 5 amazing kids, they are my world.
+                 I enjoy staying active and nature. I also love learning new skills that help me grow professionally.</p>
+        </section>
+        <section class="card">
+
+            <h2>Web Development Resources</h2>
+
+            <img src="images/coding.jpg" alt="Coding image">
+
+            <p>This course introduces the fundamentals of HTML, CSS, and JavaScript to create dynamic websites that are responsive. 
+            Throughout the class, I will learn how to structure webpages, style them effectively, and add interactivity using JavaScript. 
+            </p>
+
+        </section>
+        
     </main>
-</body>
+
 <footer>
-    <p> Footer Content</p>
+    <p> ©<span id="currentyear"></span>  Karee Graf | United States</p>
+    <p id="lastModified"></p>
 </footer>
+
+</body>
+
 </html>
