@@ -10,7 +10,7 @@ body {
 
 
 header {
-    background-color: #222;
+    background-color: #1260ae;
     color: white;
     text-align: center;
     
@@ -64,6 +64,20 @@ main h1{
     text-align: center;
 }
 
+.about-grid {
+    display:grid;
+    grid-template-columns: 1fr 150px;
+    gap: 15px;
+    align-items: center;
+}
+
+.about-bottom{
+    display:grid;
+    grid-template-columns: 150px 1fr;
+    gap:15px;
+    align-items: center;
+    margin-top: 15px;
+}
 .card {
     background-color: white;
     border: 1px solid #ccc;
@@ -71,14 +85,21 @@ main h1{
 }
 
 .card img {
-    width: 70%;
+    width: 100%;
     height: auto;
     margin-bottom: 20px;
 }
 
+.resources {
+    padding-left: 20px;
+}
+
+.resources li {
+    margin-bottom: 8px;
+}
 
 footer {
-    background-color: #222;
+    background-color: #1260ae;
     color: white;
     text-align: center;
     padding: 20px;
