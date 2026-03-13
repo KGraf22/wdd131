@@ -13,6 +13,11 @@ h1 {
     text-align: center;
 }
 
+nav {
+    display: flex;
+    justify-content: center;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -59,8 +64,8 @@ main{
 
 .container img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 220px;
+    object-fit: cover;
 }
 figure{
     text-align: center;

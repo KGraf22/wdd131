@@ -3,7 +3,7 @@ const navigation = document.querySelector('.navigation');
 
 hamButton.addEventListener('click', () => {
     navigation.classList.toggle('open');
-    hamButton.texContent = navigation.classList.contains('open') ? "X" : "☰";
+    hamButton.textContent = navigation.classList.contains('open') ? "X" : "☰";
 })
 
 const year = new Date().getFullYear();
