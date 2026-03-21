@@ -18,7 +18,7 @@ body{
 }
 
 header, footer {
-    background-color: #bbafaf;;
+    background-color: #555;;
     color: white;
     text-align: center;
     padding: 1rem;
@@ -26,6 +26,12 @@ header, footer {
 
 main {
     padding: 1rem;
+    max-width: 900px;
+    margin: auto;
+}
+
+section {
+    margin-bottom: 1.5rem;
 }
 .hero {
     grid-column: span 2;
@@ -35,7 +41,6 @@ main {
     width: 100%;
     height: auto;
 }
-
 
 
 .weather h2 {
