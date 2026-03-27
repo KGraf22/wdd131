@@ -76,9 +76,27 @@ const temples = [
     dedicated: "1998, July, 26",
     area: 11225,
     imageUrl:
-    ""  
+    "https://churchofjesuschristtemples.org/assets/img/temples/monticello-utah-temple/monticello-utah-temple-41257.jpg"  
+},
+    {
+    templeName: "Palmyra New York",
+    location: "Palmyra New York",
+    dedicated: "2000, April, 6",
+    area: 10900,
+    imageUrl:
+    "https://churchofjesuschristtemples.org/assets/img/temples/palmyra-new-york-temple/palmyra-new-york-temple-17460.jpg"  
+},
+    {
+    templeName: "Helena Montana",
+    location: "Helena Montana",
+    dedicated: "2023, June, 18",
+    area: 9794,
+    imageUrl:
+    "https://churchofjesuschristtemples.org/assets/img/temples/helena-montana-temple/helena-montana-temple-61390.jpg"  
   }
 ];  
+ 
+
 
 const container = document.querySelector(".container");
 
@@ -103,6 +121,7 @@ function displayTemples(templeList) {
         const img = document.createElement("img");
         img.src = temple.imageUrl;
         img.alt = temple.templeName;
+
         img.loading = "lazy";
         img.width = 400;
         img.height = 250;
