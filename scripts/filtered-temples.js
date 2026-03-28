@@ -92,7 +92,7 @@ const temples = [
     dedicated: "2023, June, 18",
     area: 9794,
     imageUrl:
-    "https://churchofjesuschristtemples.org/assets/img/temples/helena-montana-temple/helena-montana-temple-61390.jpg"  
+    "https://churchofjesuschristtemples.org/assets/img/temples/helena-montana-temple/helena-montana-temple-56922.jpg"  
   }
 ];  
  
@@ -136,4 +136,29 @@ function displayTemples(templeList) {
     });
 }
 
-displayTemples(temples);
+
+
+document.querySelector("#home").addEventListener("click", (e) => {
+    e.preventDefault();
+    displayTemples(temples);
+});
+document.querySelector("#old").addEventListener("click", (e) => {
+    e.preventDefault();
+    const oldTemples = temples.filter(t => new Date(t.dedicated).getFullYear() < 1900);
+    displayTemples(oldTemples);
+});
+document.querySelector("#new").addEventListener("click", (e) => {
+    e.preventDefault();
+    const newTemples = temples.filter(t => new Date(t.dedicated).getFullYear() > 2000);
+    displayTemples(newTemples);
+});
+document.querySelector("#large").addEventListener("click", (e) => {
+    e.preventDefault();
+    const largeTemples = temples.filter(t => t.area > 90000);
+    displayTemples(largeTemples);
+});
+document.querySelector("#small").addEventListener("click", (e) => {
+    e.preventDefault();
+    const smallTemples = temples.filter(t => t.area < 10000);
+    displayTemples(smallTemples);
+});
