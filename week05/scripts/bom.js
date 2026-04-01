@@ -9,9 +9,9 @@ chaptersArray.forEach(chapter => {
 });
 
 button.addEventListener('click', () => {
-    if (inputElement.value !== '') {
+    if (input.value !== '') {
         displayList(input.value); 
-        chaptersArray(input.value);
+        chaptersArray.push(input.value);
         setChapterList();
         input.value = '';
         input.focus();
