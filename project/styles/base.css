@@ -1,0 +1,87 @@
+:root {
+    --primary-color: #333333;
+    --background-color: #f4f4f4;
+    --accent-color: #4a90e2;
+    --white: #ffffff;
+
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: var(background-color);
+    line-height: 1.6;
+}
+
+header{
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+header h1 {
+    margin: 0;
+    font-family: "Oswald", sans-serif;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+section {
+    background-color: white;
+    margin: 1rem 0;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+}
+
+h2{
+    font-family: "Oswald", sans-serif;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.3rem;
+}
+
+ul {
+    padding-left: 1.2rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+.accent {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.wireframe {
+    background-color: #dddddd;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    font-family: monospace;
+    font-weight: bold;
+    white-space: pre-line;
+    margin-bottom: 2rem;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    main{
+        padding: 2rem;
+    }
+    section {
+        padding: 2rem;
+    }
+}
