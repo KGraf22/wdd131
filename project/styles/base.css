@@ -1,21 +1,14 @@
-:root {
-    --primary-color: #333333;
-    --background-color: #f4f4f4;
-    --accent-color: #4a90e2;
-    --white: #ffffff;
-
-}
 
 body {
     margin: 0;
     font-family: "Roboto", sans-serif;
-    background-color: var(--background-color);
+    background-color:#f4f4f4;
     line-height: 1.6;
 }
 
 header{
-    background-color: var(--primary-color);
-    color: white;
+    background-color: #333333;
+    color: #ffffff;
     text-align: center;
     padding: 1.5rem;
 }
@@ -32,7 +25,7 @@ main {
 }
 
 section {
-    background-color: white;
+    background-color: #ffffff;
     margin: 1rem 0;
     padding: 1rem 1.5rem;
     border-radius: 8px;
@@ -41,7 +34,7 @@ section {
 h2{
     font-family: "Oswald", sans-serif;
     color: var(--primary-color);
-    border-bottom: 2px solid var(--accent-color);
+    border-bottom: 2px solid #4a90e2;
     padding-bottom: 0.3rem;
 }
 
@@ -54,7 +47,7 @@ li {
 }
 
 .accent {
-    color: var(--accent-color);
+    color: #4a90e2;
     font-weight: bold;
 }
 
@@ -70,8 +63,8 @@ li {
 }
 
 footer {
-    background-color: var(--primary-color);
-    color: var(--white);
+    background-color: #333333;
+    color: #ffffff;
     text-align: center;
     padding: 1rem;
     margin-top: 1rem;
