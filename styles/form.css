@@ -1,0 +1,138 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f9;
+    color: #222;
+    line-height: 1.6;
+}
+
+header, footer {
+    background-color: #222;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select, textarea {
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+
+}
+
+input:focus,select:focus, textarea:focus {
+    outline: none;
+    border-color: #4a6fa5;
+    box-shadow: 0 0 4px rgba(74, 111, 165, 0.4);
+}
+
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+
+.rating {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.rating lavel:hover, .rating label:hover ~label {
+    color: gold;
+}
+
+.rating input:checked ~ label {
+    color: gold;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.features label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+}
+
+.features input[type="checkbox"] {
+    width: auto;
+}
+
+input[type="submit"] {
+    background-color: #4a6fa5;
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #3a5a87;
+}
+
+footer p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    main{
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
