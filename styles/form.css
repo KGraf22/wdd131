@@ -70,7 +70,8 @@ legend {
 }
 
 .rating {
-    flex-direction: row;
+    display: flex;
+    flex-direction: row-reverse;
     justify-content: flex-start;
 }
 
@@ -85,7 +86,7 @@ legend {
     transition: color 0.2s;
 }
 
-.rating lavel:hover, .rating label:hover ~label {
+.rating label:hover, .rating label:hover ~label {
     color: gold;
 }
 
@@ -135,4 +136,10 @@ footer p {
         margin: 1rem;
         padding: 1.5rem;
     }
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Form</title>
+    <title>Product Review Form</title>
 
     <meta name="description"
         content="Product Review Form including radio button, checkbox, written review">
@@ -34,10 +34,10 @@
     
         <div class="rating">    
             <input type="radio" id="star1" name="rating" value="1"required><label for="star1">☆</label>
-            <input type="radio" id="star2" name="rating" value="2"><label for="star2">☆</label>
-            <input type="radio" id="star3" name="rating" value="3"><label for="star3">☆</label>
-            <input type="radio" id="star4" name="rating" value="4"><label for="star4">☆</label>
-            <input type="radio" id="star5" name="rating" value="5"><label for="star5">☆</label>
+            <input type="radio" id="star2" name="rating" value="2"required><label for="star2">☆</label>
+            <input type="radio" id="star3" name="rating" value="3"required><label for="star3">☆</label>
+            <input type="radio" id="star4" name="rating" value="4"required><label for="star4">☆</label>
+            <input type="radio" id="star5" name="rating" value="5"required><label for="star5">☆</label>
         </div>
     </fieldset>
     
@@ -47,13 +47,27 @@
 
     <fieldset>
         <legend>Which features did you find useful? (Check all that apply)</legend>
-
         <div class="features">
-            <label><input type="checkbox" name="features" value="durability"> Durability</label>
-            <label><input type="checkbox" name="features" value="ease"> Ease of Use</label>
-            <label><input type="checkbox" name="features" value="performance"> Performance</label>
-            <label><input type="checkbox" name="features" value="design"> Design</label>
+            <div class="feature-item">
+                <input type="checkbox" id="durability" name="features" value="durability">
+                <label for="durability">Durability</label>
+            </div>
+        
+            <div class="feature-item">
+                <input type="checkbox" id="ease" name="features" value="ease"> 
+                <label for="ease">Ease of Use</label>
+            </div>
+
+            <div class="feature-item">
+                <input type="checkbox" id="performance" name="features" value="performance"> 
+                <label for="performance">Performance</label>
+            </div>
+
+            <div class="feature-item">
+                <input type="checkbox" id="design" name="features" value="design">
+                <label for="design">Design</label>
     
+            </div>
         </div>
     </fieldset>
 

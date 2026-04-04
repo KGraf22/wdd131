@@ -26,6 +26,36 @@ const products = [
   }
 ];
 
-let count = localStorage.getItem("review") || 0;
-count++;
-localStorage.SetItem("reviews")
+const isFormPage = document.querySelector("#product");
+
+if (isFormPage) {
+    const select = document.querySelector("#product");
+
+    products.forEach(product => {
+        const option = document.createElement("option");
+        option.value = product.name;
+        option.textContent = product.name;
+        select.appendChild(option);
+    });
+}
+
+const isReviewPage = document.querySelector("#reviewCount");
+
+if (isReviewPage) {
+  let count = localStorage.getItem("reviews") || 0;
+  count++;
+  localStorage.setItem("reviews", count);
+
+  document.getElementById("reviewCount").textContent = count;
+}
+
+
+
+
+const year = new Date().getFullYear();
+document.getElementById("currentyear").textContent = year;
+
+document.getElementById("lastModified").textContent = "Last Modified: " + document.lastModified; 
+
+    
+
