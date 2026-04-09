@@ -10,12 +10,24 @@ header, footer {
     padding: 1rem;
 }
 
+#menu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+}
 .navigation {
     display: none;
     flex-direction: column;
 }
 
-.navigaation.open{
+.navigation a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.navigation.open{
     display: flex;
 }
 
@@ -29,4 +41,37 @@ header, footer {
     grid-template-columns: 1fr;
     gap: 1rem;
     padding: 1rem;
+}
+
+.card {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    min-height: 150px;
+}
+
+
+
+
+footer {
+    background: navy;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .navigation {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
