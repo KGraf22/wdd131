@@ -1,12 +1,16 @@
+const year = new Date().getFullYear();
+document.getElementById("currentyear").textContent = year;
+
+
+
 const menuBtn = document.querySelector('#menu');
 const nav = document.querySelector('.navigation');
 
-if (menuBtn) {
+if (menuBtn && nav) {
     menuBtn.addEventListener('click', () => {
         nav.classList.toggle('open');
     });
 }
-
 
 
 const workouts = [
@@ -42,72 +46,139 @@ const workouts = [
 
 const workoutList = document.querySelector('#workoutList');
 const log = document.querySelector('#log');
+const saveBtn = document.querySelector('#saveSelected');
 
 if (workoutList && log) {
-    function showWorkouts() {
-        workoutList.innerHTML = workouts
-            .map(w => `<button class="workout-btn">${w.name}</button>`)
-            .join('');
+
+    function renderWorkoutList() {
+        workoutList.innerHTML = workouts.map(w => `
+            <label>
+                <input type="checkbox" value="${w.name}">
+                ${w.name}
+            </label><br>
+        `).join('');
     }
 
-    workoutList.addEventListener('click', (e) => {
-        
-        if (e.target.tagName === "BUTTON") {
+    renderWorkoutList(); 
+    }
 
-            const workoutName = e.target.textContent;
+    function getStoredWorkouts() {
+        return JSON.parse(localStorage.getItem('workoutLog')) || [];
+    }
 
-            let saved = JSON.parse(localStorage.getItem('workoutLog')) || [];
-
-            saved.push(workoutName);
-
-            localStorage.setItem('workoutLog', JSON.stringify(saved));
-            displayLog();
-        }
-    });
+    function saveWorkouts(selected) {
+        const stored = getStoredWorkouts();
+        const updated = [...stored, ...selected];
+        localStorage.setItem('workoutLog', JSON.stringify(updated));
+    }
 
     function displayLog() {
-        const saved = JSON.parse(localStorage.getItem('workoutLog')) || [];
+        const stored = getStoredWorkouts();
 
-        if (saved.length === 0) {
-            log.innerHTML = `<p>No workouts yet.</p>`;
+        if (stored.lenth === 0) {
+            log.innerHTML = '<p>No workouts yet.</p>';
             return;
         }
 
-        log.innerHTML = saved
-            .map(w => `<p>${w}</p>`)
-            .join('');
+        log.innerHTML = stored.map(w => '<p>${w}</p>').join('');
     }
 
-    showWorkouts();
-    displayLog();
-}
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+            const checked = document.querySelectorAll('#workoutList input:checked');
+
+            const selected = [...checked].map(item => item.value);
+
+            saveWorkouts(selected);
+            displayLog();
+        });
+    }
+
+    renderWorkoutList();
+   
+   
+
 
 const generateBtn = document.querySelector('#generate');
 const output = document.querySelector('#output');
 const categorySelect = document.querySelector('#category');
 
-if (generateBtn) {
-    generateBtn.addEventListener('click', () => {
-        const selected = categorySelect.ariaValueMax;
-
-        let filtered = workouts.filter(w => w / categpru === selected);
-
-        if (selected === "full") {
-            filtered = workouts.filter(w =>
+if (generateBtn && output && categorySelect) {
+    function getFilteredWorkouts(category) {
+        if (category === "full") {
+            return workouts.filter(w =>
                 w.category === "upper" ||
                 w.category === "lower" ||
                 w.category === "core"
             );
         }
+        return workouts.filter(w => w.category === category);
+    }
+
+    generateBtn, addEventListener('click', () => {
+        const selected = categorySelect.value;
+
+        if (selected === "choose-category") {
+            output.innerHTML = `<p>Please select a category.</p>`;
+            return;
+        }
+
+        const filtered = getFilteredWorkouts(selected);
 
         if (filtered.length === 0) {
             output.innerHTML = `<p>No workouts found.</p>`;
             return;
         }
 
-        const pick = filtered[Math.floor(Math.random() * filtered.length)];
+        const randomIndex = Math.floor(Math.random() * filtered.length);
+        const workout = filtered[randomIndex];
 
-        output.innerHTML = `<p>${pick.name}</p>`;
+        output.innerHTML = `<p>${workout.name}</p>`;
     });
 }
 
+const startBtn = document.querySelector('#startTimer');
+const timerDisplay = document.querySelector('#timer');
+
+let timerInterval;
+let secons = 0;
+let running = false;
+
+if (startBtn && timerDisplay) {
+    function updateTimer() {
+        seconds++;
+        timerDisplay.textContent = '${seconds} seconds';
+    }
+    startBtn.addEventListener('click', () => {
+        if (!running) {
+            running = true;
+            startBtn.textContent = "Stop Timer";
+
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+        else {
+            running = false;
+            startBtn.textContent = "Start Timer";
+        }
+    });
+}
+
+const form = document.querySelector('#goalForm');
+const goalOutput = document.querySelector('#goalOutput');
+
+if (form && goalOutput) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const goal = document.querySelector('#goal').value;
+
+        localStorage.setItem('goal', goal);
+       
+        goalOutput.textContent = `Goal: ${goal}`;
+    });
+
+    const savedGoal = localStorage.getItem('goal');
+    if (savedGoal) {
+        goalOutput.textContent = `Goal: ${savedGoal}`;
+    }
+}
