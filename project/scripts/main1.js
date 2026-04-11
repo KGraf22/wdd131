@@ -157,13 +157,21 @@ function displayLog() {
         return;
     }
 
-    log.innerHTML = stored.map(entry => `
-        <div class="card">
-            <p><strong>${entry.time}</strong></p>
-            <p>${entry.workouts.join(", ")}</p>
-            <p>Duration: ${entry.duration} sec</p>
-        </div>
-    `).join('');
+    log.innerHTML = stored.map(entry => {
+
+        // 🛡️ safety fix
+        const workoutsList = Array.isArray(entry.workouts)
+            ? entry.workouts.join(", ")
+            : "No workouts recorded";
+
+        return `
+            <div class="card">
+                <p><strong>${entry.time || "No date"}</strong></p>
+                <p>${workoutsList}</p>
+                <p>Duration: ${entry.duration ?? "N/A"} sec</p>
+            </div>
+        `;
+    }).join('');
 }
 
 if (saveBtn) {
@@ -171,6 +179,8 @@ if (saveBtn) {
 
         const selected = [...document.querySelectorAll('#workoutList input:checked')]
             .map(i => i.value);
+        
+        console.log("Saving workouts:", selected);
 
         if (!selected.length) return;
         
