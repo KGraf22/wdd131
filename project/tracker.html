@@ -10,7 +10,7 @@
     <title>Workout Tracker</title>
 
     <link rel="stylesheet" href="styles/main.css">
-    <script src="scripts/main.js" defer></script>
+    <script src="scripts/main1.js" defer></script>
 
 </head>
 <body>
@@ -25,23 +25,15 @@
 
     </header>
 
-    <main>
-        <form id="goalForm">
-            <label for="goal">Set Workout Goal</label>
-            <input type="text" id="goal" required>
-            <button type="submit">Save Goal</button>
-        </form>
-
-        <p id="goalOutput"></p>
-        
-        
-        <h3>Select a Workout</h3>
-
-        <div id="workoutList"></div>
+    <main class="container">
+        <div class="card">
+            <h3>Select Workouts</h3>
+            <div id="workoutList"></div>
+            <button id="saveSelected">Save Selected</button>
+        </div>
 
         <h3>Your Workout Log</h3>
         <div id="log"></div>
-        <button id="saveSelected">Save Selected</button>
     </main>
 
     <footer>

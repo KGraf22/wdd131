@@ -1,8 +1,6 @@
 const year = new Date().getFullYear();
 document.getElementById("currentyear").textContent = year;
 
-
-
 const menuBtn = document.querySelector('#menu');
 const nav = document.querySelector('.navigation');
 
@@ -44,11 +42,11 @@ const workouts = [
     { name: "Kettlebell squats", category: "kettlebell" }
 ];
 
-const workoutList = document.querySelector('#workoutList');
-const log = document.querySelector('#log');
-const saveBtn = document.querySelector('#saveSelected');
+const workoutList = document.querySelector('#category');
+const output = document.querySelector('#output');
 
-if (workoutList && log) {
+
+if (categorySelect && output) {
 
     function renderWorkoutList() {
         workoutList.innerHTML = workouts.map(w => `
@@ -65,22 +63,44 @@ if (workoutList && log) {
     function getStoredWorkouts() {
         return JSON.parse(localStorage.getItem('workoutLog')) || [];
     }
+if (saveBtn) {
+    savedBtn.addEventListener('click', () => {
+        const checked = document.querySelectorAll('#workoutList input:checked');
+        const selected = [...checked].map(item => item.value);
 
-    function saveWorkouts(selected) {
-        const stored = getStoredWorkouts();
-        const updated = [...stored, ...selected];
-        localStorage.setItem('workoutLog', JSON.stringify(updated));
-    }
+        if (selected.length === 0) return;
+
+        const entry = {
+            workouts: selected,
+            time: new Date().toLocaleString(),
+            duration: "manual"
+        };
+
+        let stored = JSON.parse(localStorage.getItem('workoutLog')) || [];
+        stored.push(entry);
+
+        localStorage.setItem('workoutLog', JSON.stringify(stored));
+
+        displayLog();
+    });
+}
+
 
     function displayLog() {
-        const stored = getStoredWorkouts();
+        const stored = JSON.parse(localStorage.getItem('workoutLog')) || [];
 
-        if (stored.lenth === 0) {
-            log.innerHTML = '<p>No workouts yet.</p>';
+        if (stored.length === 0) {
+            log.innerHTML = `<p>No workouts yet.</p>`;
             return;
         }
 
-        log.innerHTML = stored.map(w => '<p>${w}</p>').join('');
+        log.innerHTML = stored.map(entry => `
+            <div class="card">
+                <p><strong>${entry.time}</strong></p>
+                <p>Workout: ${entry.workouts.join(", ")}</p>
+                <p>Duration: ${entry.duration} sec</p>
+            </div>
+        `).join('');
     }
 
     if (saveBtn) {
@@ -104,18 +124,7 @@ const output = document.querySelector('#output');
 const categorySelect = document.querySelector('#category');
 
 if (generateBtn && output && categorySelect) {
-    function getFilteredWorkouts(category) {
-        if (category === "full") {
-            return workouts.filter(w =>
-                w.category === "upper" ||
-                w.category === "lower" ||
-                w.category === "core"
-            );
-        }
-        return workouts.filter(w => w.category === category);
-    }
-
-    generateBtn, addEventListener('click', () => {
+     generateBtn.addEventListener('click', () => {
         const selected = categorySelect.value;
 
         if (selected === "choose-category") {
@@ -123,42 +132,51 @@ if (generateBtn && output && categorySelect) {
             return;
         }
 
-        const filtered = getFilteredWorkouts(selected);
+        const filtered = workouts.filter(w => w.category === selected);
 
         if (filtered.length === 0) {
             output.innerHTML = `<p>No workouts found.</p>`;
             return;
         }
 
-        const randomIndex = Math.floor(Math.random() * filtered.length);
-        const workout = filtered[randomIndex];
-
-        output.innerHTML = `<p>${workout.name}</p>`;
+        
+        output.innerHTML = filtered.map(w => `
+            <label>
+                <input type="checkbox" value="${w.name}">
+                ${w.name}
+            </label><br>
+        `).join('');
     });
 }
 
 const startBtn = document.querySelector('#startTimer');
 const timerDisplay = document.querySelector('#timer');
 
-let timerInterval;
-let secons = 0;
+
+let seconds = 0;
 let running = false;
+let timerInterval;
 
 if (startBtn && timerDisplay) {
-    function updateTimer() {
-        seconds++;
-        timerDisplay.textContent = '${seconds} seconds';
-    }
+
     startBtn.addEventListener('click', () => {
+
         if (!running) {
             running = true;
-            startBtn.textContent = "Stop Timer";
+            startBtn.textContent = "End Workout";
 
-            timerInterval = setInterval(updateTimer, 1000);
-        }
-        else {
+            timerInterval = setInterval(() => {
+                seconds++;
+                timerDisplay.textContent = `${seconds} seconds`;
+            }, 1000);
+
+        } else {
             running = false;
-            startBtn.textContent = "Start Timer";
+            startBtn.textContent = "Start Workout";
+            clearInterval(timerInterval);
+
+            saveCompletedWorkout();
+
         }
     });
 }
@@ -182,3 +200,47 @@ if (form && goalOutput) {
         goalOutput.textContent = `Goal: ${savedGoal}`;
     }
 }
+
+function saveCompletedWorkout() {
+    const selected = document.querySelectorAll('#output input:checked');
+
+    const workoutNames = [...selected].map(i => i.value);
+
+    if (workoutNames.length === 0) return;
+
+    const entry = {
+        workouts: workoutNames,
+        time: new Date().toLocaleString(),
+        duration: seconds
+    };
+
+    let saved = JSON.parse(localStorage.getItem('workoutLog')) || [];
+    saved.push(entry);
+
+    localStorage.setItem('workoutLog', JSON.stringify(saved));
+
+    seconds = 0;
+}
+
+const manualBtn = document.querySelector('#addManual');
+
+if (manualBtn) {
+    manualBtn.addEventListener('click', () => {
+        const input = document.querySelector('#manualWorkout').value;
+
+        if (!input) return;
+
+        const entry = {
+            workouts: [input],
+            time: new Date().toLocaleString(),
+            duration: "manual"
+        };
+
+        let saved = JSON.parse(localStorage.getItem('workoutLog')) || [];
+        saved.push(entry);
+
+        localStorage.setItem('workoutLog', JSON.stringify(saved));
+        displayLog();
+    });
+}
+

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,9 @@
 
     <title>Workouts</title>
     <link rel="stylesheet" href="styles/main.css">
-    <script src="scripts/main.js" defer></script>
-
+    <script src="scripts/main1.js" defer></script>
 </head>
+
 <body>
     <header>
         <h1>Workout Generator</h1>
@@ -21,34 +22,58 @@
         </nav>
     </header>
     
-    <main>
-        <h2>Select Workout Type</h2>
+    <main class="container">
 
-        <select id="category">
-            <option value="choose-category">Choose Category</option>
-            <option value="upper">Upper Body</option>
-            <option value="lower">Lower Body</option>
-            <option value="full">Full Body</option>
-            <option value="cardio">Cardio</option>
-            <option value="hiit">HIIT</option>
-            <option value="warmup">Warm Up</option>
-            <option value="cooldown">Cool Down</option>
-            <option value="pilates">Pilates</option>
-            <option value="no-weights">No Weights</option>
-            <option value="kettlebell">Kettlebell</option>
-
-        </select>
+        <form id="goalForm" class="card">
+            <label for="goal">Workout Goal</label>
+            <select id="goal">
+                <option>Select</option>
+                <option>Lose Weight</option>
+                <option>Build Muscle</option>
+                <option>Stay Active</option>
+                <option>Healthy Habits</option>
+            </select>
+            <button type="submit">Save Goal</button>
+        </form>
         
+        <p id="goalOutput"></p>
 
-    
-        <button id="generate">Start Workout</button>
-        <div id="output"></div>
+        <div class="card">
+            <h2>Select Workout Type</h2>
+
+            <select id="category">
+                <option value="choose-category">Choose Category</option>
+                <option value="upper">Upper Body</option>
+                <option value="lower">Lower Body</option>
+                <option value="full">Full Body</option>
+                <option value="cardio">Cardio</option>
+                <option value="hiit">HIIT</option>
+                <option value="warmup">Warm Up</option>
+                <option value="cooldown">Cool Down</option>
+                <option value="pilates">Pilates</option>            
+            </select>
+            
+            <div id="output"></div>
+
         
+            <button id="startTimer">Start Workout</button>
+            <button id="pauseTimer">Pause</button>
+            
+            <p id="timer">0 seconds</p>
+        </div>
+        
+        <section class="image-grid">
+        
+            <img src="https://images.pexels.com/photos/6496124/pexels-photo-6496124.jpeg" alt="Placeholder home workout man"
+                loading="lazy" width="600" height="300">  
+        
+            <img src="https://images.pexels.com/photos/8846119/pexels-photo-8846119.jpeg" alt="Placeholder home workout woman"
+                loading="lazy" width="600" height="300">
+        </section>
     </main>
 
     <footer>
         <p> ©<span id="currentyear"></span> Everyday Strong</p>
-        <p id="lastModified"></p>
     </footer>
 
 </body>
