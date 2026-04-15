@@ -80,7 +80,7 @@ header, footer {
     width: min(100%, 900px);
 }
 
-woman img,
+.woman img,
 .squat img {
     width: 100%;
     height: auto;
